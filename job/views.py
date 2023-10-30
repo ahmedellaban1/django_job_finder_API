@@ -21,15 +21,21 @@ class JobListView(generics.ListCreateAPIView):
 job_list = JobListView.as_view()
 
 
-@api_view(['GET'])
-def job_details(request, *args, **kwargs):
-    try:
-        job = Job.objects.get(id=kwargs['id'])
-        serializer = JobSerializer(job).data
-        response = {
-            "job": serializer
-        }
-        return Response(response, status=status.HTTP_200_OK)
-    except:
-        return Response(ERORR_404, status=status.HTTP_404_NOT_FOUND)
+class JobDetails(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Job.objects.all()
+    lookup_field = 'id'
+    serializer_class = JobSerializer
 
+    # def get(self, request, *args, **kwargs):
+    #     try:
+    #         job = self.queryset.get(id=kwargs['id'])
+    #         serializer = JobSerializer(job).data
+    #         response = {
+    #         "job": serializer
+    #         }
+    #         return Response(response, status=status.HTTP_200_OK)
+    #     except:
+    #         return Response(ERORR_404, status=status.HTTP_404_NOT_FOUND)
+    
+
+job_details = JobDetails.as_view()
