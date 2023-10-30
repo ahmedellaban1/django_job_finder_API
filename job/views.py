@@ -9,7 +9,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
 
-class JobListView(generics.ListAPIView):
+class JobListView(generics.ListCreateAPIView):
     queryset = Job.objects.all()
     serializer_class = JobSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
