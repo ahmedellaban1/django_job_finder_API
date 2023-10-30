@@ -46,7 +46,7 @@ python3 -V
 <hr>
 
 ## Folder structure
-![Screenshot from 2023-10-22 14-51-17](https://github.com/ahmedellaban1/job_finder_template_view/assets/75578565/d883b4b8-aaa3-4d41-99c8-d3db5b62e526)
+
 
 | Folder     | Description                                                             |
 |:-----------|:------------------------------------------------------------------------|
@@ -55,8 +55,6 @@ python3 -V
 | job        | contains every thing about posts (db models, tables, views, urls)       |
 | media      | this folder not in repo but once you upload image django will create it |
 | migrations | contains db tables files that allow django to create database           |
-| templates  | contains (html) files                                                   |
-| static     | contains ( css, Js, img) files                                          |
 
 | File             | Description                                                                                      |
 |:-----------------|:-------------------------------------------------------------------------------------------------|
