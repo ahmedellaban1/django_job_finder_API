@@ -5,10 +5,18 @@ from .serializers import JobSerializer
 from rest_framework.decorators import api_view
 from etc.response_errors import ERORR_404
 from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
+
 
 class JobListView(generics.ListAPIView):
     queryset = Job.objects.all()
     serializer_class = JobSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['title', 'vacancy', 'job_type', ]
+    search_fields = ['title', 'vacancy', 'job_type','description']
+    ordering_fields = ['id', 'title', 'vacancy', 'job_type','description']
+
 
 job_list = JobListView.as_view()
 
